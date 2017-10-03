@@ -7,6 +7,7 @@
         public const string IsIntegridade = "integridade.ativar";
         public const string DocumentoFiscalEletronico = "dfe.documentoFiscalEletronico";
         public const string AmbienteSefaz = "dfe.ambienteSefaz";
+        public const string VersaoServico = "dfe.versao";
         public const string TipoCertificadoDigital = "certificado.tipoCertificadoDigital";
         public const string SerialCertificadoDigital = "certificado.serial";
         public const string ArquivoCertificadoDigital = "certificado.arquivo";

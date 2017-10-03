@@ -43,10 +43,9 @@
     <Compile Include="Cfg\Configuracao.cs" />
     <Compile Include="Cfg\DadosCertificado.cs" />
     <Compile Include="Cfg\Ambiente.cs" />
+    <Compile Include="DFe\CTeOS\Documento.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DFe\CTeOS\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

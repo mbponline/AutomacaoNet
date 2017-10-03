@@ -40,6 +40,14 @@ namespace AutomacaoNet.Test.Cfg
         }
 
         [Test]
+        public void EsperaVersaoServico()
+        {
+            const string versaoServico = "dfe.versao";
+
+            Assert.AreEqual(versaoServico, Ambiente.VersaoServico);
+        }
+
+        [Test]
         public void EsperaDocumentoFiscalEletronico()
         {
             const string documentoFiscalEletronico = "dfe.documentoFiscalEletronico";
