@@ -47,15 +47,23 @@
     <Compile Include="DFe\Base\EmitenteBase.cs" />
     <Compile Include="DFe\Base\EnderecoBase.cs" />
     <Compile Include="DFe\Base\EstadoUF.cs" />
+    <Compile Include="DFe\Base\Pais.cs" />
+    <Compile Include="DFe\CTeOS\Componente.cs" />
+    <Compile Include="DFe\CTeOS\Contingencia.cs" />
     <Compile Include="DFe\CTeOS\CteAnulacao.cs" />
     <Compile Include="DFe\CTeOS\CteSubstituicao.cs" />
     <Compile Include="DFe\CTeOS\DadosComplementares.cs" />
     <Compile Include="DFe\CTeOS\Documento.cs" />
-    <Compile Include="DFe\CTeOS\DocumentosReferenciados.cs" />
+    <Compile Include="DFe\CTeOS\DocumentoReferenciado.cs" />
     <Compile Include="DFe\CTeOS\Emitente.cs" />
+    <Compile Include="DFe\CTeOS\EnderecoTomador.cs" />
     <Compile Include="DFe\CTeOS\Flags\Cst.cs" />
+    <Compile Include="DFe\CTeOS\Flags\IndicadorIETomador.cs" />
     <Compile Include="DFe\CTeOS\Flags\Responsavel.cs" />
+    <Compile Include="DFe\CTeOS\Flags\TipoEmissao.cs" />
+    <Compile Include="DFe\CTeOS\Flags\TipoImpressao.cs" />
     <Compile Include="DFe\CTeOS\Flags\TipoProprietario.cs" />
+    <Compile Include="DFe\CTeOS\Flags\TipoServico.cs" />
     <Compile Include="DFe\CTeOS\ICMS.cs" />
     <Compile Include="DFe\CTeOS\Icms00.cs" />
     <Compile Include="DFe\CTeOS\Icms45.cs" />
@@ -66,14 +74,19 @@
     <Compile Include="DFe\CTeOS\Identificacao.cs" />
     <Compile Include="DFe\CTeOS\Imposto.cs" />
     <Compile Include="DFe\CTeOS\NF.cs" />
+    <Compile Include="DFe\CTeOS\ObservacaoContribuinte.cs" />
+    <Compile Include="DFe\CTeOS\ObservacaoFisco.cs" />
     <Compile Include="DFe\CTeOS\PrestacaoServico.cs" />
     <Compile Include="DFe\CTeOS\Proprietario.cs" />
     <Compile Include="DFe\CTeOS\RodoviarioOS.cs" />
     <Compile Include="DFe\CTeOS\Seguro.cs" />
+    <Compile Include="DFe\CTeOS\Servicos\CTeOSAutorizar.cs" />
     <Compile Include="DFe\CTeOS\Tomador.cs" />
     <Compile Include="DFe\CTeOS\TributosFederais.cs" />
-    <Compile Include="DFe\CTeOS\Valores.cs" />
+    <Compile Include="DFe\CTeOS\ValorServico.cs" />
     <Compile Include="DFe\CTeOS\Veiculo.cs" />
+    <Compile Include="DFe\IAutorizar.cs" />
+    <Compile Include="DFe\IRespostaAutorizar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

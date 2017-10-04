@@ -24,13 +24,13 @@ namespace AutomacaoNet.DFe.CTeOS
 
         public Tomador Tomador { get; set; }
 
-        public Valores Valores { get; set; }
+        public ValorServico ValorServico { get; set; }
 
         public Imposto Imposto { get; set; }
 
         public PrestacaoServico PrestacaoServico { get; set; }
 
-        public IList<DocumentosReferenciados> DocumentosReferenciados { get; set; }
+        public IList<DocumentoReferenciado> DocumentosReferenciados { get; set; }
 
         public IList<Seguro> Seguros { get; set; }
 

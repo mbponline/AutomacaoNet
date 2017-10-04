@@ -2,9 +2,9 @@
 {
     public class CteSubstituicao
     {
-        public string Chave { get; set; }
+        public string ChaveCTe { get; set; }
 
-        public string ChaveAnulacao { get; set; }
+        public string ChaveCTeAnulacao { get; set; }
 
         public string ChaveNFeEmitidaPeloTomador { get; set; }
 
