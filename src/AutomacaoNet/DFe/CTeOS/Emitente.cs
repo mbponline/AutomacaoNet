@@ -7,7 +7,14 @@ namespace AutomacaoNet.DFe.CTeOS
     /// </summary>
     public class Emitente : EmitenteBase
     {
+        /// <summary>
+        /// Inscrição Estadual do Substituto Tributário
+        /// </summary>
         public string InscricaoEstadualST { get; set; }
+
+        /// <summary>
+        /// Telefone
+        /// </summary>
         public string Telefone { get; set; }
     }
 }

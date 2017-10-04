@@ -47,10 +47,33 @@
     <Compile Include="DFe\Base\EmitenteBase.cs" />
     <Compile Include="DFe\Base\EnderecoBase.cs" />
     <Compile Include="DFe\Base\EstadoUF.cs" />
+    <Compile Include="DFe\CTeOS\CteAnulacao.cs" />
+    <Compile Include="DFe\CTeOS\CteSubstituicao.cs" />
     <Compile Include="DFe\CTeOS\DadosComplementares.cs" />
     <Compile Include="DFe\CTeOS\Documento.cs" />
+    <Compile Include="DFe\CTeOS\DocumentosReferenciados.cs" />
     <Compile Include="DFe\CTeOS\Emitente.cs" />
+    <Compile Include="DFe\CTeOS\Flags\Cst.cs" />
+    <Compile Include="DFe\CTeOS\Flags\Responsavel.cs" />
+    <Compile Include="DFe\CTeOS\Flags\TipoProprietario.cs" />
+    <Compile Include="DFe\CTeOS\ICMS.cs" />
+    <Compile Include="DFe\CTeOS\Icms00.cs" />
+    <Compile Include="DFe\CTeOS\Icms45.cs" />
+    <Compile Include="DFe\CTeOS\Icms90.cs" />
+    <Compile Include="DFe\CTeOS\IcmsOutraUf.cs" />
+    <Compile Include="DFe\CTeOS\IcmsPartilha.cs" />
+    <Compile Include="DFe\CTeOS\IcmsSn.cs" />
     <Compile Include="DFe\CTeOS\Identificacao.cs" />
+    <Compile Include="DFe\CTeOS\Imposto.cs" />
+    <Compile Include="DFe\CTeOS\NF.cs" />
+    <Compile Include="DFe\CTeOS\PrestacaoServico.cs" />
+    <Compile Include="DFe\CTeOS\Proprietario.cs" />
+    <Compile Include="DFe\CTeOS\RodoviarioOS.cs" />
+    <Compile Include="DFe\CTeOS\Seguro.cs" />
+    <Compile Include="DFe\CTeOS\Tomador.cs" />
+    <Compile Include="DFe\CTeOS\TributosFederais.cs" />
+    <Compile Include="DFe\CTeOS\Valores.cs" />
+    <Compile Include="DFe\CTeOS\Veiculo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

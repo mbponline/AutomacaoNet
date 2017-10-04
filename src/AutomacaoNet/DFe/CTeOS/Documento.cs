@@ -1,4 +1,6 @@
-﻿namespace AutomacaoNet.DFe.CTeOS
+﻿using System.Collections.Generic;
+
+namespace AutomacaoNet.DFe.CTeOS
 {
     /// <summary>
     /// CTeOS
@@ -14,5 +16,33 @@
         /// compl - Dados complementares do CT-e para fins operacionais ou comerciais
         /// </summary>
         public DadosComplementares DadosComplementares { get; set; }
+
+        /// <summary>
+        /// emit - Identificação do Emitente do CT-e OS
+        /// </summary>
+        public Emitente Emitente { get; set; }
+
+        public Tomador Tomador { get; set; }
+
+        public Valores Valores { get; set; }
+
+        public Imposto Imposto { get; set; }
+
+        public PrestacaoServico PrestacaoServico { get; set; }
+
+        public IList<DocumentosReferenciados> DocumentosReferenciados { get; set; }
+
+        public IList<Seguro> Seguros { get; set; }
+
+        public RodoviarioOS RodoviarioOS { get; set; }
+
+        public CteSubstituicao CteSubstituicao { get; set; }
+
+        public string ChaveCteComplemento { get; set; }
+
+        public CteAnulacao CteAnulacao { get; set; }
+
+        public List<string> DocumentoUnicoAutorizadoDownoad { get; set; }
+
     }
 }
