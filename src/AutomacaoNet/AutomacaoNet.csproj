@@ -46,9 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cfg\BancoDados.cs" />
     <Compile Include="Cfg\Configuracao.cs" />
     <Compile Include="Cfg\DadosCertificado.cs" />
-    <Compile Include="Cfg\Ambiente.cs" />
+    <Compile Include="Cfg\DadosCertificadoDigital.cs" />
+    <Compile Include="Cfg\Flags\AmbienteSefaz.cs" />
+    <Compile Include="Cfg\Flags\DFeEletronico.cs" />
+    <Compile Include="Cfg\Flags\TipoBancoDados.cs" />
+    <Compile Include="Cfg\Flags\TipoCertificado.cs" />
+    <Compile Include="Cfg\Sefaz.cs" />
+    <Compile Include="Cfg\StringConexaoBD.cs" />
     <Compile Include="DFe\Base\Cidade.cs" />
     <Compile Include="DFe\Base\EmitenteBase.cs" />
     <Compile Include="DFe\Base\EnderecoBase.cs" />
