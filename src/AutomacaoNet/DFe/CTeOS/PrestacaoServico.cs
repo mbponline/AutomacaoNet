@@ -2,8 +2,8 @@
 {
     public class PrestacaoServico
     {
-        public string DescricaoServicoPrestado { get; set; }
+        public decimal ValorTotal { get; set; }
 
-        public decimal QuantidadeCarga { get; set; }
+        public decimal ValorReceber { get; set; }
     }
 }

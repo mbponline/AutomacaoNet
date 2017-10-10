@@ -14,7 +14,7 @@ namespace AutomacaoNet.DFe.CTeOS
 
         public Cidade Cidade { get; set; }
 
-        public string Cep { get; set; }
+        public long? Cep { get; set; }
 
         public Pais Pais { get; set; }
     }

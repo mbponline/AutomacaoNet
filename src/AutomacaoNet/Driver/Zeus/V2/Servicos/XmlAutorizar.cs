@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography;
 using AutomacaoNet.Cfg;
 using AutomacaoNet.Cfg.Flags;
 using AutomacaoNet.DFe.CTeOS;
 using AutomacaoNet.DFe.CTeOS.Flags;
 using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.Emitente;
-using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.Identificacao;
 using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.Tipos;
+using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.Valores;
 using DFe.DocumentosEletronicos.CTe.CTeOS;
 using DFe.DocumentosEletronicos.CTe.CTeOS.Informacoes;
 using DFe.DocumentosEletronicos.CTe.CTeOS.Informacoes.Identificacao;
+using DFe.DocumentosEletronicos.CTe.CTeOS.Informacoes.Tomador;
 using DFe.DocumentosEletronicos.Entidades;
 using DFe.DocumentosEletronicos.Flags;
 
@@ -30,9 +29,56 @@ namespace AutomacaoNet.Driver.Zeus.V2.Servicos
             var cteOs = new CTeOS {InfCte = new infCteOS()};
 
             cteOs.InfCte.ide = ConverteIde(documento);
-            cteOs.InfCte.emit = ConverteEmite(documento);
+            cteOs.InfCte.emit = ConverteEmitente(documento);
+            cteOs.InfCte.toma = ConverteTomador(documento);
+            cteOs.InfCte.vPrest = ConvertePrestacaoServico(documento);
 
             return string.Empty;
+        }
+
+        private vPrestOs ConvertePrestacaoServico(Documento documento)
+        {
+            var vPrest = new vPrestOs();
+
+            vPrest.vTPrest = documento.PrestacaoServico.ValorTotal;
+            vPrest.vRec = documento.PrestacaoServico.ValorReceber;
+
+            return vPrest;
+        }
+
+        private tomaOs ConverteTomador(Documento documento)
+        {
+            var docToma = documento.Tomador;
+            var toma = new tomaOs();
+
+            if (docToma.DocumentoUnico.Length == 11)
+            {
+                toma.CPF = docToma.DocumentoUnico;
+            }
+
+            if (docToma.DocumentoUnico.Length == 14)
+            {
+                toma.CNPJ = docToma.DocumentoUnico;
+            }
+
+            toma.IE = docToma.InscricaoEstadual;
+            toma.xNome = docToma.NomeOuRazaoSocial;
+            toma.xFant = docToma.NomeFantasia;
+            toma.fone = docToma.Telefone;
+
+            var endereco = new enderTomaOs();
+
+            endereco.xLgr = documento.Tomador.EnderecoTomador.Logradouro;
+            endereco.nro = documento.Tomador.EnderecoTomador.Numero;
+            endereco.xCpl = documento.Tomador.EnderecoTomador.Complemento;
+            endereco.xBairro = documento.Tomador.EnderecoTomador.Bairro;
+            endereco.cMun = documento.Tomador.EnderecoTomador.Cidade.CodigoIbge;
+            endereco.xMun = documento.Tomador.EnderecoTomador.Cidade.Nome;
+            endereco.CEP = documento.Tomador.EnderecoTomador.Cep;
+            endereco.UF = endereco.UF.SiglaParaEstado(documento.Tomador.EnderecoTomador.Cidade.SiglaUF);
+
+            toma.enderToma = endereco;
+            return toma;
         }
 
         private ideOs ConverteIde(Documento documento)
@@ -136,7 +182,7 @@ namespace AutomacaoNet.Driver.Zeus.V2.Servicos
             return ide;
         }
 
-        private emitOs ConverteEmite(Documento documento)
+        private static emitOs ConverteEmitente(Documento documento)
         {
             var emit = new emitOs();
 
@@ -158,7 +204,6 @@ namespace AutomacaoNet.Driver.Zeus.V2.Servicos
             enderEmit.fone = documento.Emitente.Telefone;
 
             emit.enderEmit = enderEmit;
-
             return emit;
         }
     }

@@ -10,6 +10,8 @@
 
         public string NomeFantasia { get; set; }
 
+        public string Telefone { get; set; }
+
         public EnderecoTomador EnderecoTomador { get; set; }
 
         public string Email { get; set; }
