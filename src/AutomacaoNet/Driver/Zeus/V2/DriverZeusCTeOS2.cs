@@ -12,7 +12,7 @@ namespace AutomacaoNet.Driver.Zeus.V2
 
         public DriverZeusCTeOS2(Configuracao configuracao)
         {
-            _autorizar = new CTeOSAutorizar(new XmlAutorizar(configuracao));
+            _autorizar = new CTeOSAutorizar(new XmlAutorizar(configuracao), configuracao);
         }
 
         public IRespostaAutorizar Autorizar(Documento documento)
