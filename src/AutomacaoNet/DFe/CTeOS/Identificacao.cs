@@ -21,6 +21,8 @@ namespace AutomacaoNet.DFe.CTeOS
 
         public TipoImpressao TipoImpressao { get; set; }
 
+        public TipoCte TipoCte { get; set; }
+
         public TipoEmissao TipoEmissao { get; set; }
 
         public string VersaoAplicativoEmissor { get; set; }
@@ -29,7 +31,7 @@ namespace AutomacaoNet.DFe.CTeOS
 
         public TipoServico TipoServico { get; set; }
 
-        public IndicadorIETomador IndicadorInscricaoEstadualTomador { get; set; }
+        public IndicadorIETomador IndicadorIETomador { get; set; }
 
         public Cidade CidadeInicio { get; set; }
 

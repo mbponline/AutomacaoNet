@@ -33,6 +33,6 @@
         /// <summary>
         /// CEP
         /// </summary>
-        public string Cep { get; set; }
+        public long? Cep { get; set; }
     }
 }

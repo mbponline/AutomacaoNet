@@ -1,4 +1,5 @@
-﻿using AutomacaoNet.DFe;
+﻿using AutomacaoNet.Cfg;
+using AutomacaoNet.DFe;
 using AutomacaoNet.DFe.CTeOS;
 using AutomacaoNet.DFe.CTeOS.Servicos;
 using AutomacaoNet.Driver.Zeus.V2.Servicos;
@@ -9,9 +10,9 @@ namespace AutomacaoNet.Driver.Zeus.V2
     {
         private readonly IAutorizar<Documento> _autorizar;
 
-        public DriverZeusCTeOS2()
+        public DriverZeusCTeOS2(Configuracao configuracao)
         {
-            _autorizar = new CTeOSAutorizar(new XmlAutorizar());
+            _autorizar = new CTeOSAutorizar(new XmlAutorizar(configuracao));
         }
 
         public IRespostaAutorizar Autorizar(Documento documento)

@@ -73,6 +73,7 @@
     <Compile Include="DFe\CTeOS\Flags\Cst.cs" />
     <Compile Include="DFe\CTeOS\Flags\IndicadorIETomador.cs" />
     <Compile Include="DFe\CTeOS\Flags\Responsavel.cs" />
+    <Compile Include="DFe\CTeOS\Flags\TipoCte.cs" />
     <Compile Include="DFe\CTeOS\Flags\TipoEmissao.cs" />
     <Compile Include="DFe\CTeOS\Flags\TipoImpressao.cs" />
     <Compile Include="DFe\CTeOS\Flags\TipoProprietario.cs" />
