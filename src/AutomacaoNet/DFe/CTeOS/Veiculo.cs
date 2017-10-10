@@ -1,4 +1,6 @@
-﻿namespace AutomacaoNet.DFe.CTeOS
+﻿using AutomacaoNet.DFe.Base;
+
+namespace AutomacaoNet.DFe.CTeOS
 {
     public class Veiculo
     {
@@ -7,5 +9,7 @@
         public string Renavam { get; set; }
 
         public Proprietario Proprietario { get; set; }
+
+        public EstadoUF EstadoUf { get; set; }
     }
 }

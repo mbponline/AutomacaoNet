@@ -30,6 +30,8 @@ namespace AutomacaoNet.DFe.CTeOS
 
         public PrestacaoServico PrestacaoServico { get; set; }
 
+        public InfPrestacaoServico InfPrestacaoServico { get; set; }
+
         public IList<DocumentoReferenciado> DocumentosReferenciados { get; set; }
 
         public IList<Seguro> Seguros { get; set; }

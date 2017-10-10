@@ -87,6 +87,7 @@
     <Compile Include="DFe\CTeOS\IcmsSn.cs" />
     <Compile Include="DFe\CTeOS\Identificacao.cs" />
     <Compile Include="DFe\CTeOS\Imposto.cs" />
+    <Compile Include="DFe\CTeOS\InfPrestacaoServico.cs" />
     <Compile Include="DFe\CTeOS\NF.cs" />
     <Compile Include="DFe\CTeOS\ObservacaoContribuinte.cs" />
     <Compile Include="DFe\CTeOS\ObservacaoFisco.cs" />

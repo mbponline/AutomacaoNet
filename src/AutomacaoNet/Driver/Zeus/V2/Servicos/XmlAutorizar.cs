@@ -1,14 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
 using AutomacaoNet.Cfg;
 using AutomacaoNet.Cfg.Flags;
 using AutomacaoNet.DFe.CTeOS;
 using AutomacaoNet.DFe.CTeOS.Flags;
+using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.AutorizadoDownloadXml;
 using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.Emitente;
+using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.infCteAnu;
+using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.infCteComp;
+using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.infCTeNormal.infCteSubs;
+using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.infCTeNormal.infModals.rodoviarioOS;
 using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.Tipos;
 using DFe.DocumentosEletronicos.CTe.Classes.Informacoes.Valores;
 using DFe.DocumentosEletronicos.CTe.CTeOS;
 using DFe.DocumentosEletronicos.CTe.CTeOS.Informacoes;
 using DFe.DocumentosEletronicos.CTe.CTeOS.Informacoes.Identificacao;
+using DFe.DocumentosEletronicos.CTe.CTeOS.Informacoes.InfCTeNormal;
 using DFe.DocumentosEletronicos.CTe.CTeOS.Informacoes.Tomador;
 using DFe.DocumentosEletronicos.Entidades;
 using DFe.DocumentosEletronicos.Flags;
@@ -32,8 +39,249 @@ namespace AutomacaoNet.Driver.Zeus.V2.Servicos
             cteOs.InfCte.emit = ConverteEmitente(documento);
             cteOs.InfCte.toma = ConverteTomador(documento);
             cteOs.InfCte.vPrest = ConvertePrestacaoServico(documento);
+            cteOs.InfCte.infCTeNorm = ConverterCteNormal(documento);
 
             return string.Empty;
+        }
+
+        private infCTeNormOs ConverterCteNormal(Documento documento)
+        {
+            var infCteNorm = new infCTeNormOs();
+
+            InfPrestacaoServico(documento, infCteNorm);
+
+            InfDocumentosReferenciados(documento, infCteNorm);
+
+            InfSeguros(documento, infCteNorm);
+
+            InfCteSubstituicao(documento, infCteNorm);
+
+            InfCteComplementado(documento, infCteNorm);
+
+            InfCteAnulacao(documento, infCteNorm);
+
+            AutorizadosParaDownloadXml(documento, infCteNorm);
+
+            infCteNorm.infModal = new infModalOs();
+            var modalRodo = new rodoOS();
+            infCteNorm.infModal.ContainerModal = modalRodo;
+
+            modalRodo.TAF = documento.RodoviarioOS.Taf;
+            modalRodo.NroRegEstadual = documento.RodoviarioOS.NumeroRegistroEstadual;
+
+            ModalRodoviarioOs(documento, modalRodo);
+
+            return infCteNorm;
+        }
+
+        private static void ModalRodoviarioOs(Documento documento, rodoOS modalRodo)
+        {
+            if (documento.RodoviarioOS.Veiculo != null)
+            {
+                var veiculo = new veicOs();
+                modalRodo.veic = veiculo;
+
+                veiculo.placa = documento.RodoviarioOS.Veiculo.Placa;
+                veiculo.RENAVAM = documento.RodoviarioOS.Veiculo.Renavam;
+
+                if (documento.RodoviarioOS.Veiculo.Proprietario != null)
+                {
+                    var docProprietario = documento.RodoviarioOS.Veiculo.Proprietario;
+                    var proprietario = new prop();
+                    modalRodo.veic.prop = proprietario;
+
+                    if (docProprietario.DocumentoUnico.Length == 11)
+                    {
+                        proprietario.CPF = docProprietario.DocumentoUnico;
+                    }
+
+                    if (docProprietario.DocumentoUnico.Length == 14)
+                    {
+                        proprietario.CNPJ = docProprietario.DocumentoUnico;
+                    }
+
+                    proprietario.TAF = docProprietario.Taf;
+                    proprietario.NroRegEstadual = docProprietario.NumeroRegistroEstadual;
+                    proprietario.xNome = docProprietario.NomeOuRazaoSocial;
+                    proprietario.IE = docProprietario.InscricaoEstadual;
+                    proprietario.UF = proprietario.UF.SiglaParaEstado(docProprietario.EstadoUf.Sigla);
+
+                    switch (docProprietario.TipoProprietario)
+                    {
+                        case TipoProprietario.TacAgregado:
+                            proprietario.tpProp = tpPropProp.TACAgregado;
+                            break;
+                        case TipoProprietario.TacIndependente:
+                            proprietario.tpProp = tpPropProp.TACIndependente;
+                            break;
+                        case TipoProprietario.Outros:
+                            proprietario.tpProp = tpPropProp.Outros;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+
+                    veiculo.UF = veiculo.UF.SiglaParaEstado(documento.RodoviarioOS.Veiculo.EstadoUf.Sigla);
+                }
+            }
+        }
+
+        private static void AutorizadosParaDownloadXml(Documento documento, infCTeNormOs infCteNorm)
+        {
+            var autorizadosDownXml = documento.DocumentoUnicoAutorizadoDownoad;
+            if (autorizadosDownXml != null && autorizadosDownXml.Count != 0)
+            {
+                infCteNorm.autXml = new List<autXML>();
+                foreach (var autoDownXml in autorizadosDownXml)
+                {
+                    var autXml = new autXML();
+
+                    if (autoDownXml.Length == 11)
+                    {
+                        autXml.CPF = autoDownXml;
+                    }
+
+                    if (autoDownXml.Length == 14)
+                    {
+                        autXml.CNPJ = autoDownXml;
+                    }
+
+                    infCteNorm.autXml.Add(autXml);
+                }
+            }
+        }
+
+        private static void InfCteAnulacao(Documento documento, infCTeNormOs infCteNorm)
+        {
+            if (documento.CteAnulacao != null)
+            {
+                infCteNorm.infCteAnu = new infCteAnu
+                {
+                    dEmi = documento.CteAnulacao.EmissaoEm,
+                    chCte = documento.CteAnulacao.ChaveCTe
+                };
+            }
+        }
+
+        private static void InfCteComplementado(Documento documento, infCTeNormOs infCteNorm)
+        {
+            if (!string.IsNullOrWhiteSpace(documento.ChaveCteComplemento))
+            {
+                infCteNorm.infCteComp = new infCteComp
+                {
+                    chCTe = documento.ChaveCteComplemento
+                };
+            }
+        }
+
+        private static void InfCteSubstituicao(Documento documento, infCTeNormOs infCteNorm)
+        {
+            if (documento.CteSubstituicao != null)
+            {
+                infCteNorm.infCteSub = new infCteSubOs();
+                var infCteSub = infCteNorm.infCteSub;
+
+                infCteSub.chCte = documento.CteSubstituicao.ChaveCTe;
+                infCteSub.refCteAnu = documento.CteSubstituicao.ChaveCTeAnulacao;
+
+                infCteSub.tomaICMS = new tomaICMS();
+                var tomaIcms = infCteSub.tomaICMS;
+
+                tomaIcms.refNFe = documento.CteSubstituicao.ChaveNFeEmitidaPeloTomador;
+                tomaIcms.refNF = new refNF();
+
+                var refNf = tomaIcms.refNF;
+                var documentoUnicoRefNf = documento.CteSubstituicao.NF.DocumentoUnico;
+
+                if (documentoUnicoRefNf.Length == 11)
+                {
+                    refNf.CPF = documentoUnicoRefNf;
+                }
+
+                if (documentoUnicoRefNf.Length == 14)
+                {
+                    refNf.CNPJ = documentoUnicoRefNf;
+                }
+
+                refNf.mod = documento.CteSubstituicao.NF.ModeloDocumentoFiscal;
+                refNf.serie = documento.CteSubstituicao.NF.Serie;
+                refNf.subserie = documento.CteSubstituicao.NF.SubSerie;
+                refNf.nro = documento.CteSubstituicao.NF.NumeroFiscal;
+                refNf.valor = documento.CteSubstituicao.NF.Valor;
+                refNf.dEmi = documento.CteSubstituicao.NF.EmissaoEm;
+
+                tomaIcms.refCte = documento.CteSubstituicao.ChaveCTeEmitidaPeloTomador;
+            }
+        }
+
+        private static void InfSeguros(Documento documento, infCTeNormOs infCteNorm)
+        {
+            var seguros = documento.Seguros;
+            if (seguros != null && seguros.Count != 0)
+            {
+                infCteNorm.seg = new List<segOs>();
+                foreach (var seguro in seguros)
+                {
+                    var seg = new segOs();
+
+                    switch (seguro.Responsavel)
+                    {
+                        case Responsavel.EmitenteCte:
+                            seg.respSeg = respSeg.EmitenteDoCTe;
+                            break;
+                        case Responsavel.TomadorDeServico:
+                            seg.respSeg = respSeg.TomadorDoServico;
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+
+                    seg.xSeg = seguro.NomeSeguradora;
+                    seg.nApol = seguro.NumeroApolice;
+
+                    infCteNorm.seg.Add(seg);
+                }
+            }
+        }
+
+        private static void InfDocumentosReferenciados(Documento documento, infCTeNormOs infCteNorm)
+        {
+            var documentosReferenciados = documento.DocumentosReferenciados;
+            if (documentosReferenciados != null && documentosReferenciados.Count != 0)
+            {
+                infCteNorm.infDocRef = new List<infDocRef>();
+
+                foreach (var documentosReferenciado in documentosReferenciados)
+                {
+                    var docRef = new infDocRef();
+
+                    docRef.nDoc = documentosReferenciado.Numero;
+                    docRef.serie = documentosReferenciado.Serie;
+                    docRef.subserie = documentosReferenciado.SubSerie;
+                    docRef.dEmi = documentosReferenciado.EmitidoEm;
+                    docRef.vDoc = documentosReferenciado.Valor;
+
+                    infCteNorm.infDocRef.Add(docRef);
+                }
+            }
+        }
+
+        private static void InfPrestacaoServico(Documento documento, infCTeNormOs infCteNorm)
+        {
+            if (string.IsNullOrWhiteSpace(documento.InfPrestacaoServico?.DescricaoServico)) return;
+
+            infCteNorm.infServico = new infServico
+            {
+                xDescServ = documento.InfPrestacaoServico.DescricaoServico
+            };
+
+            if (documento.InfPrestacaoServico.QuantidadeCarga != null)
+            {
+                infCteNorm.infServico.infQ = new infQOs
+                {
+                    qCarga = documento.InfPrestacaoServico.QuantidadeCarga
+                };
+            }
         }
 
         private vPrestOs ConvertePrestacaoServico(Documento documento)

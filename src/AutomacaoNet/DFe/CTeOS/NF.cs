@@ -10,7 +10,7 @@ namespace AutomacaoNet.DFe.CTeOS
 
         public short Serie { get; set; }
 
-        public short SubSerie { get; set; }
+        public short? SubSerie { get; set; }
 
         public int NumeroFiscal { get; set; }
 
