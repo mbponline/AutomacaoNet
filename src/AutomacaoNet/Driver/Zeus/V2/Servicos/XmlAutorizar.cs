@@ -22,7 +22,7 @@ using DFe.DocumentosEletronicos.Flags;
 
 namespace AutomacaoNet.Driver.Zeus.V2.Servicos
 {
-    public class XmlAutorizar : IGetXml<Documento>
+    public class XmlAutorizar : IGetObjeto<Documento, CTeOS>
     {
         private readonly Configuracao _configuracao;
 
@@ -31,7 +31,7 @@ namespace AutomacaoNet.Driver.Zeus.V2.Servicos
             _configuracao = configuracao;
         }
 
-        public string GetXml(Documento documento)
+        public CTeOS GetObjeto(Documento documento)
         {
             var cteOs = new CTeOS {InfCte = new infCteOS()};
 
@@ -41,7 +41,7 @@ namespace AutomacaoNet.Driver.Zeus.V2.Servicos
             cteOs.InfCte.vPrest = ConvertePrestacaoServico(documento);
             cteOs.InfCte.infCTeNorm = ConverterCteNormal(documento);
 
-            return string.Empty;
+            return cteOs;
         }
 
         private infCTeNormOs ConverterCteNormal(Documento documento)

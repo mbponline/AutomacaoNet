@@ -103,7 +103,7 @@
     <Compile Include="DFe\IAutorizar.cs" />
     <Compile Include="DFe\IRespostaAutorizar.cs" />
     <Compile Include="Driver\IDriver.cs" />
-    <Compile Include="Driver\IGetXml.cs" />
+    <Compile Include="Driver\IGetObjeto.cs" />
     <Compile Include="Driver\Zeus\V2\DriverZeusCTeOS2.cs" />
     <Compile Include="Driver\Zeus\V2\Servicos\XmlAutorizar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,19 +1,19 @@
 ﻿using AutomacaoNet.Driver;
-
+using CTeOs = DFe.DocumentosEletronicos.CTe.CTeOS.CTeOS;
 namespace AutomacaoNet.DFe.CTeOS.Servicos
 {
     public class CTeOSAutorizar : IAutorizar<Documento>
     {
-        private readonly IGetXml<Documento> _getXml;
+        private readonly IGetObjeto<Documento, CTeOs> _getObjeto;
 
-        public CTeOSAutorizar(IGetXml<Documento> getXml)
+        public CTeOSAutorizar(IGetObjeto<Documento, CTeOs> getObjeto)
         {
-            _getXml = getXml;
+            _getObjeto = getObjeto;
         }
 
         public IRespostaAutorizar Enviar(Documento documento)
         {
-            var xml = _getXml.GetXml(documento);
+            var cteOs = _getObjeto.GetObjeto(documento);
 
             return null;
         }
