@@ -30,6 +30,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DFe">
+      <HintPath>..\3rd\DFe.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations">
+      <HintPath>..\3rd\JetBrains.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -87,6 +93,10 @@
     <Compile Include="DFe\CTeOS\Veiculo.cs" />
     <Compile Include="DFe\IAutorizar.cs" />
     <Compile Include="DFe\IRespostaAutorizar.cs" />
+    <Compile Include="Driver\IDriver.cs" />
+    <Compile Include="Driver\IGetXml.cs" />
+    <Compile Include="Driver\Zeus\V2\DriverZeusCTeOS2.cs" />
+    <Compile Include="Driver\Zeus\V2\Servicos\XmlAutorizar.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

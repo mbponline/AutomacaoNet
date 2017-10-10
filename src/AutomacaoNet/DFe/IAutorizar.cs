@@ -1,8 +1,8 @@
 ﻿namespace AutomacaoNet.DFe
 {
-    public interface IAutorizar<Entity>
+    public interface IAutorizar<in TEntity>
     {
-        IRespostaAutorizar Enviar(Entity entity);
+        IRespostaAutorizar Enviar(TEntity documento);
     }
 
 }
