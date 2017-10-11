@@ -61,7 +61,10 @@
     <Compile Include="DFe\Base\EnderecoBase.cs" />
     <Compile Include="DFe\Base\EstadoUF.cs" />
     <Compile Include="DFe\Base\Pais.cs" />
+    <Compile Include="DFe\CTeOS\Cfg\Factory\CertificadoFactoryCTeOS.cs" />
     <Compile Include="DFe\CTeOS\Componente.cs" />
+    <Compile Include="DFe\CTeOS\Cfg\Factory\ConfiguracaoFactory.cs" />
+    <Compile Include="DFe\CTeOS\Cfg\CTeConfig.cs" />
     <Compile Include="DFe\CTeOS\Contingencia.cs" />
     <Compile Include="DFe\CTeOS\CteAnulacao.cs" />
     <Compile Include="DFe\CTeOS\CteSubstituicao.cs" />
@@ -101,11 +104,13 @@
     <Compile Include="DFe\CTeOS\ValorServico.cs" />
     <Compile Include="DFe\CTeOS\Veiculo.cs" />
     <Compile Include="DFe\IAutorizar.cs" />
+    <Compile Include="DFe\IFactoryConfiguracao.cs" />
     <Compile Include="DFe\IRespostaAutorizar.cs" />
     <Compile Include="Driver\IDriver.cs" />
     <Compile Include="Driver\IGetObjeto.cs" />
     <Compile Include="Driver\Zeus\V2\DriverZeusCTeOS2.cs" />
     <Compile Include="Driver\Zeus\V2\Servicos\XmlAutorizar.cs" />
+    <Compile Include="LocalAplicacao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

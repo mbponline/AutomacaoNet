@@ -5,5 +5,6 @@
         public BancoDados BancoDados { get; set; }
         public DadosCertificadoDigital DadosCertificadoDigital { get; set; }
         public Sefaz Sefaz { get; set; }
+        public string CnpjEmitente { get; set; }
     }
 }

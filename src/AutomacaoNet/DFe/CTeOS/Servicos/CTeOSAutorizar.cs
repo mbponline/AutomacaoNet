@@ -16,9 +16,6 @@ namespace AutomacaoNet.DFe.CTeOS.Servicos
 
         public IRespostaAutorizar Enviar(Documento documento)
         {
-            
-
-
             var cteOs = _getObjeto.GetObjeto(documento);
 
 
