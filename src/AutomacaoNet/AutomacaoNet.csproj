@@ -91,6 +91,7 @@
     <Compile Include="DFe\CTeOS\Flags\TipoImpressao.cs" />
     <Compile Include="DFe\CTeOS\Flags\TipoProprietario.cs" />
     <Compile Include="DFe\CTeOS\Flags\TipoServico.cs" />
+    <Compile Include="DFe\CTeOS\Historico\CteOsEmissaoHistorico.cs" />
     <Compile Include="DFe\CTeOS\ICMS.cs" />
     <Compile Include="DFe\CTeOS\Icms00.cs" />
     <Compile Include="DFe\CTeOS\Icms45.cs" />
@@ -125,7 +126,9 @@
     <Compile Include="Migracoes\V01\CriaTabelaEmissaoCTeOsHistorico.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="DFe\CTeOS\Historico\CteOsEmissaoHistorico.xml" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />

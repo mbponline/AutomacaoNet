@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<hibernate-mapping assembly="AutomacaoNet"
+                   namespace="AutomacaoNet.DFe.CTeOS.Historico"
+                   xmlns="urn:nhibernate-mapping2.2">
+
+  <class name="CteOsEmissaoHistorico" table="cteos_emissao_historico">
+    <id name="Id" column="id">
+      <generator class="identity" />
+    </id>
+
+    <property name="CnpjEmitente" column="cnpjEmitente" not-null="true" />
+    
+    <property name="XmlEnvio" column="xmlEnvio" not-null="true" />
+    
+    <property name="XmlRetorno" column="xmlRetorno" not-null="true" />
+    
+    <property name="XmlAutorizado" column="xmlAutorizado" not-null="true" />
+    
+    <property name="NumeroFiscal" column="numeroFiscal" not-null="true" />
+    
+    <property name="Chave" column="chave" not-null="true" />
+    
+    <property name="IsFinalizou" column="isFinalizou" not-null="true" />
+    
+    <property name="IsAutorizado" column="isAutorizado" not-null="true" />
+    
+    <property name="EnviadoEm" column="enviadoEm" not-null="true" />
+    
+    <property name="AutorizadoEm" column="autorizadoEm" not-null="false" />
+    
+    <property name="CodigoStatusSefaz" column="codigoStatusSefaz" not-null="true" />
+    
+    <property name="MotivoSefaz" column="motivoSefaz" not-null="true" />
+    
+    <property name="Referencia" column="referencia" not-null="true" />
+  </class>
+  
+</hibernate-mapping>
