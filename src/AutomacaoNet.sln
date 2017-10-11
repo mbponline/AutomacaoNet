@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomacaoNet", "AutomacaoNe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomacaoNet.Test", "AutomacaoNet.Test\AutomacaoNet.Test.csproj", "{4FD3B82A-4D17-4D50-BED2-20957E762A46}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExecutaMigracao", "ExecutaMigracao\ExecutaMigracao.csproj", "{4F6D0F07-0FE6-4829-AE4F-191086DD0463}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4FD3B82A-4D17-4D50-BED2-20957E762A46}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4FD3B82A-4D17-4D50-BED2-20957E762A46}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4FD3B82A-4D17-4D50-BED2-20957E762A46}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F6D0F07-0FE6-4829-AE4F-191086DD0463}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F6D0F07-0FE6-4829-AE4F-191086DD0463}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F6D0F07-0FE6-4829-AE4F-191086DD0463}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F6D0F07-0FE6-4829-AE4F-191086DD0463}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
