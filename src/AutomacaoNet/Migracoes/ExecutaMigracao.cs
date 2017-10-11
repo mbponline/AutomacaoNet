@@ -10,7 +10,7 @@ namespace AutomacaoNet.Migracoes
     public static class ExecutaMigracao
     {
         public static string StringConexao =
-            @"Server=localhost;Port=5432;User ID=postgres;Password=root;Database=nfeapi;";
+            @"Server=localhost;Port=5432;User ID=postgres;Password=root;Database=automacaoNet;";
 
         public  static void Executar()
         {
